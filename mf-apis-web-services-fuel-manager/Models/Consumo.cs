@@ -6,8 +6,9 @@ namespace mf_apis_web_services_fuel_manager.Models
     [Table("Consumos")]
     public class Consumo
     {
-        
+
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -17,6 +18,7 @@ namespace mf_apis_web_services_fuel_manager.Models
         public DateTime Data { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(18,2")]
         public decimal Valor { get; set; }
 
         [Required]
@@ -25,8 +27,7 @@ namespace mf_apis_web_services_fuel_manager.Models
         [Required]
         public int VeiculoId { get; set; }
 
-
-        public Veiculo Veiculo{ get; set; }
+        public Veiculo Veiculo { get; set; }
     }
 
     public enum TipoCombustivel
