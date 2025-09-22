@@ -1,5 +1,7 @@
 using mf_apis_web_services_fuel_manager.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddDbContext<AppDbContext>(Options =>
     Options.UseSqlServer(builder.Configuration.GetConnectionString("DefautConnection")));
